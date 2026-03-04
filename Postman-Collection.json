@@ -1,0 +1,242 @@
+{
+  "info": {
+    "_postman_id": "event-driven-microservices-lab",
+    "name": "Event-Driven Microservices Lab",
+    "description": "Postman collection for testing the Event-Driven Architecture with Kafka",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Order Service",
+      "item": [
+        {
+          "name": "Create Order - Laptop",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"ORD-1001\",\n  \"item\": \"Laptop\",\n  \"quantity\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["orders"]
+            },
+            "description": "Create a new order (triggers Kafka event)"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order - Mouse",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"ORD-1002\",\n  \"item\": \"Mouse\",\n  \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["orders"]
+            },
+            "description": "Create order for 2 mice"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order - Keyboard",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"ORD-1003\",\n  \"item\": \"Keyboard\",\n  \"quantity\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["orders"]
+            },
+            "description": "Create order for keyboard"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order - Monitor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"ORD-1004\",\n  \"item\": \"Monitor\",\n  \"quantity\": 3\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["orders"]
+            },
+            "description": "Create order for 3 monitors"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/orders/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["orders", "1"]
+            },
+            "description": "Retrieve order details by ID"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Inventory Service",
+      "item": [
+        {
+          "name": "Get Inventory",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/inventory",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["inventory"]
+            },
+            "description": "Get all inventory records"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Billing Service",
+      "item": [
+        {
+          "name": "Get Invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/billing",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["billing"]
+            },
+            "description": "Get all invoices"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "System Health",
+      "item": [
+        {
+          "name": "Health Check - API Gateway",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/actuator/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["actuator", "health"]
+            },
+            "description": "Check API Gateway health"
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check - Order Service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/actuator/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["actuator", "health"]
+            },
+            "description": "Check Order Service health"
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check - Inventory Service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/actuator/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["actuator", "health"]
+            },
+            "description": "Check Inventory Service health"
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check - Billing Service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/actuator/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["actuator", "health"]
+            },
+            "description": "Check Billing Service health"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
